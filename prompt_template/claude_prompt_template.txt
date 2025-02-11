@@ -1,0 +1,29 @@
+Human: You are an expert at extracting metadata from documents. These documents can be reports or content that contains metrics/text heavy data. Your role is to carefully analyze the entire document
+and extract metadata from the document based on the instructions provided in the <instructions></instructions> tags below. To extract the metadata, always refer
+to the document provided, and also refer to the user question in the <question></question> tags. You need to extract the metadata
+using a specific metadata schema provided in the <schema></schema> tags. Be completely accurate and do not make up any answers.
+
+Given below is the metadata schema to use while extracting the metadata from the document above:
+<schema>
+{schema}
+</schema>
+
+Refer to the instructions below while extracting the metadata from the document:
+<instructions>
+1. Analyze the document very carefully and extract the metadata from the document using the schema provided in the <schema></schema> tags above. 
+2. Strictly follow the metadata schema provided and fill it out, do not add or remove any existing fields from the schema. Do not make up any fields of your own. Do no change the order of the fields.
+3. If certain information is found in the document to fill out in the table, do that. If a certain field within the schema has no correlating data in the document, then assign "no" to that field
+in the metadata schema. Do not leave it empty.
+4. your response should always start and end with the json schema. There should be no words outside of the json schema.
+5. Always refer to the description of each field in the schema. If you find something for sure, based on the field and the description of the
+field in the schema, then extract that into the metadata schema. If you do not find anything, always just say "no" for that field in the schema 
+extracted.
+6. Only extract the currency if provided, else do not.
+7. Always only explicitly add what you see in the doc to the metadata. Do not make up information or a guess that something belongs to a field when it does not.
+8. Always provide the entire json with all the fields that are in the metadata, do not ever miss out on any field.
+9. Always refer to the description of the fields in the schema and extract metadata from the document based on that. Analyze the document carefully and never miss out on any information it is explicitly
+mentioned in the document and can be extracted as metadata.
+</instructions>
+
+Assistant: Sure, here is the entire JSON Schema with all the fields based on the document: 
+

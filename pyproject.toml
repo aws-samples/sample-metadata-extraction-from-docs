@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "extract-schema-metadata"
+version = "0.1.0"
+description = "POC that extracts metadata from user-provided documents"
+requires-python = ">=3.9"
+dependencies = [
+    "awscli>=1.37.9",
+    "boto3>=1.36.9",
+    "botocore>=1.36.9",
+    "PyYAML>=6.0.2",
+    "litellm",
+    "python-dateutil",
+    "six",
+    "tornado",
+    "jupyter_core",
+    "traitlets",
+    "pyzmq",
+    "jupyter_client",
+    "aiohttp",
+    "stack_data",
+    "ipykernel",  
+    "executing",
+    "platformdirs",
+    "IPython",
+    "asttokens",
+    "comm",
+    "decorator",
+    "prompt_toolkit",
+    "wcwidth",
+    "pygments",
+    "typing_extensions",
+    "packaging",
+    "httpx",
+    "multidict",
+    "pure_eval",
+    "jmespath",
+    "urllib3",
+    "appnope",
+    "psutil",
+    "idna",
+    "pip"        
+]
+
+[tool.setuptools.packages.find]
+include = ["data", "prompt_template"]

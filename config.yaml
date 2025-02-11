@@ -1,0 +1,251 @@
+---
+aws:
+  poc_name: schema-extraction-poc
+
+# directory paths
+# these directory paths contain the source data PDF/docx files that are consumed, 
+dir_info:
+  source_dir: data
+  # This is the directory that will store the results for invocations from
+  # each model
+  results_dir: results
+  # This directory contains each schema extracted from models on Bedrock into JSON files
+  schema_dir: schema_extracted
+  # These files can either be PDF/Docx files or they can
+  # be public urls that the solution gets and uses to extract metadata from
+  data_files:
+  - https://docs.aws.amazon.com/pdfs/whitepapers/latest/ml-best-practices-healthcare-life-sciences/ml-best-practices-healthcare-life-sciences.pdf#ml-best-practices-healthcare-life-sciences
+  # This is the directory containing model specific prompts
+  # to extract metadata from documents, provided a schema and a 
+  # document
+  prompt_template_dir: prompt_template
+
+# These are the models to be tested 
+model_information:
+  # Prefix the model id with "us." if you are using the model in a region that
+  # requires the inference profile id of the model
+  - model_id: us.anthropic.claude-3-5-sonnet-20241022-v2:0
+    # Set run test to "yes" if you want to run the specific FM through the documents 
+    # and generate metadata schema for each document. Set it to "no" to skip the FM and move
+    # on to the next model in this array
+    run_test: yes
+    prompt: claude_prompt_template.txt
+    inference_parameters:
+      temperature: 0.1
+      max_tokens: 2048
+  - model_id: us.amazon.nova-pro-v1:0
+    run_test: no
+    prompt: nova_prompt_template.txt
+    inference_parameters:
+      temperature: 0.1
+      max_tokens: 2048
+
+# Enter the metadata schema you would like your metadata to be extracted in
+# This can be your custom metadata that the model on Bedrock will use to generate
+# metadata from documents
+metadata_schema: | 
+    {
+    "$schema": "http://json-schema.org/draft-07/schema#\",
+    "description": "PDF Document Analysis Schema",
+    "type": "object",
+    "properties": {
+      "document_metadata": {
+        "type": "object",
+        "inferenceType": "extractive",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the PDF document\n"
+          },
+          "author": {
+            "type": "string",
+            "description": "Author of the document\n"
+          },
+          "creation_date": {
+            "type": "string",
+            "description": "Date when the document was created\n"
+          },
+          "last_modified": {
+            "type": "string",
+            "description": "Last modification date\n"
+          },
+          "page_count": {
+            "type": "integer",
+            "description": "Total number of pages\n"
+          },
+          "file_size": {
+            "type": "string",
+            "description": "Size of the PDF file\n"
+          }
+        }
+      },
+      "content_analysis": {
+        "type": "object",
+        "inferenceType": "extractive",
+        "properties": {
+          "executive_summary": {
+            "type": "string",
+            "description": "Brief summary of the document's main points\n"
+          },
+          "key_topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Main topics covered in the document\n"
+          },
+          "language_detection": {
+            "type": "object",
+            "properties": {
+              "primary_language": {
+                "type": "string",
+                "description": "Primary language of the document\n"
+              },
+              "secondary_languages": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Other languages found in the document\n"
+              }
+            }
+          }
+        }
+      },
+      "structural_elements": {
+        "type": "object",
+        "inferenceType": "extractive",
+        "properties": {
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "heading": {
+                  "type": "string",
+                  "description": "Section heading\n"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Section content\n"
+                },
+                "page_number": {
+                  "type": "integer",
+                  "description": "Page number where section appears\n"
+                }
+              }
+            }
+          },
+          "tables": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "table_id": {
+                  "type": "string",
+                  "description": "Unique identifier for the table\n"
+                },
+                "caption": {
+                  "type": "string",
+                  "description": "Table caption or title\n"
+                },
+                "data": {
+                  "type": "array",
+                  "description": "Table content in matrix format\n"
+                },
+                "page_location": {
+                  "type": "integer",
+                  "description": "Page number where table appears\n"
+                }
+              }
+            }
+          },
+          "figures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "figure_id": {
+                  "type": "string",
+                  "description": "Unique identifier for the figure\n"
+                },
+                "caption": {
+                  "type": "string",
+                  "description": "Figure caption\n"
+                },
+                "image_type": {
+                  "type": "string",
+                  "description": "Type of image (chart, diagram, photo, etc.)\n"
+                },
+                "page_location": {
+                  "type": "integer",
+                  "description": "Page number where figure appears\n"
+                }
+              }
+            }
+          }
+        }
+      },
+      "reference_information": {
+        "type": "object",
+        "inferenceType": "extractive",
+        "properties": {
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of citations found in the document\n"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "URLs found in the document\n"
+          },
+          "footnotes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Footnotes from the document\n"
+          }
+        }
+      },
+      "semantic_analysis": {
+        "type": "object",
+        "inferenceType": "extractive",
+        "properties": {
+          "sentiment_score": {
+            "type": "number",
+            "description": "Overall document sentiment (-1 to 1)\n"
+          },
+          "key_entities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "entity": {
+                  "type": "string",
+                  "description": "Named entity\n"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Entity type (person, organization, location, etc.)\n"
+                },
+                "mentions": {
+                  "type": "integer",
+                  "description": "Number of times entity is mentioned\n"
+                }
+              }
+            }
+          },
+          "document_category": {
+            "type": "string",
+            "description": "Classification of document type\n"
+          }
+        }
+      }
+    }
+    }

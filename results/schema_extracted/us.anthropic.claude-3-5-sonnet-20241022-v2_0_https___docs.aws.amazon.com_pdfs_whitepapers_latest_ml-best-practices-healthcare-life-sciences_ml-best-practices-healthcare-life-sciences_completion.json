@@ -1,0 +1,111 @@
+{
+  "document_metadata": {
+    "title": "Machine Learning Best Practices in Healthcare and Life Sciences",
+    "author": "no",
+    "creation_date": "November 22, 2021",
+    "last_modified": "no",
+    "page_count": 42,
+    "file_size": "no"
+  },
+  "content_analysis": {
+    "executive_summary": "This whitepaper describes how AWS approaches machine learning (ML) in a regulated environment and provides guidance on good ML practices using AWS products. It takes into consideration the principles described in the FDA's Proposed Regulatory Framework for AI/ML-Based Software as a Medical Device and provides best practices based on experience with pharmaceutical and medical device customers.",
+    "key_topics": [
+      "Machine Learning in Healthcare",
+      "GxP Compliance",
+      "Model Training",
+      "Model Validation",
+      "Model Monitoring",
+      "Data Security",
+      "Model Interpretability",
+      "MLOps",
+      "Regulatory Compliance"
+    ],
+    "language_detection": {
+      "primary_language": "English",
+      "secondary_languages": [
+        "no"
+      ]
+    }
+  },
+  "structural_elements": {
+    "sections": [
+      {
+        "heading": "Introduction",
+        "content": "Discusses how pharmaceutical industry is adopting AI/ML technologies and associated regulatory challenges",
+        "page_number": 1
+      },
+      {
+        "heading": "Benefits of machine learning",
+        "content": "Explains the potential of ML in healthcare and regulatory considerations",
+        "page_number": 3
+      },
+      {
+        "heading": "Life sciences at AWS",
+        "content": "Details AWS's dedicated Genomics and Life Sciences Practice and its ecosystem",
+        "page_number": 4
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "no",
+        "caption": "no",
+        "data": [],
+        "page_location": "no"
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "fig1",
+        "caption": "MLOps workflow",
+        "image_type": "diagram",
+        "page_location": 29
+      },
+      {
+        "figure_id": "fig2",
+        "caption": "Model training and tracking architecture",
+        "image_type": "diagram",
+        "page_location": 31
+      },
+      {
+        "figure_id": "fig3",
+        "caption": "Specific model inference architecture that leverages AWS native tools and services",
+        "image_type": "diagram",
+        "page_location": 32
+      }
+    ]
+  },
+  "reference_information": {
+    "citations": [
+      "no"
+    ],
+    "external_links": [
+      "https://www.fda.gov/files/medical%20devices/published/US-FDA-Artificial-Intelligence-and-Machine-Learning-Discussion-Paper.pdf",
+      "https://aws.amazon.com/health/customer-stories",
+      "https://aws.amazon.com/health/lifesciences-partner-solutions"
+    ],
+    "footnotes": [
+      "no"
+    ]
+  },
+  "semantic_analysis": {
+    "sentiment_score": "no",
+    "key_entities": [
+      {
+        "entity": "AWS",
+        "type": "organization",
+        "mentions": "no"
+      },
+      {
+        "entity": "FDA",
+        "type": "organization",
+        "mentions": "no"
+      },
+      {
+        "entity": "Amazon SageMaker",
+        "type": "product",
+        "mentions": "no"
+      }
+    ],
+    "document_category": "Technical Whitepaper"
+  }
+}

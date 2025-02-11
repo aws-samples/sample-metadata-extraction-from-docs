@@ -1,0 +1,336 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "default",
+    "documentClass": "default",
+    "type": "object",
+    "definitions": {},
+    "properties": {
+      "contract_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Classification of contract as pre-paid or standard. If it is both, then this field is 'Hybrid'"
+      },
+      "contract_amount": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Total contract value. Provide all details for the pricing here along with the total contract value, (for example, pricing tiers, minimum fees broken down, etc.)"
+      },
+      "currency": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Currency of the contract amount"
+      },
+      "start_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Start date of the contract or license"
+      },
+      "end_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "End date of the contract or license"
+      },
+      "initiative_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Name of the initiative associated with contract"
+      },
+      "payment_terms": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "This is teh detail on the payment terms in the contract"
+      },
+      "payment_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "timing of invoicing and if the invoice will be paid 'upfront' or billing in 'arrears'"
+      },
+      "vendor_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Name of the vendor from the contract"
+      },
+      "license_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Type of license, for example, Annual"
+      },
+      "quantity_of_licenses": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "quantity of licenses detailed in the contract."
+      },
+      "license_metric": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The unit of measure (metric) utilized for license charging (e.g., \"interactions\")."
+      },
+      "contract_length": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The total length of the contract."
+      },
+      "renewal_terms": {
+        "type": "boolean",
+        "inferenceType": "extractive",
+        "description": "Whether renewal is automatic"
+      },
+      "renewal_period": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Period of renewal if automatic - can be either \"month-to-month\" or \"annual\""
+      },
+      "termination_notice_details": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Details of termination notice"
+      },
+      "sourcing_region": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Region associated with sourcing from the contract"
+      },
+      "minimum_commitment_required": {
+        "type": "boolean",
+        "inferenceType": "extractive",
+        "description": "Whether minimum commitment exists"
+      },
+      "minimum_commitment_amount": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Minimum commitment amount if applicable"
+      },
+      "sam_overage_flag": {
+        "type": "boolean",
+        "inferenceType": "extractive",
+        "description": "Indicate if there is a SAM (Software Asset Management) overage flag "
+      },
+      "technical_excess_ability": {
+        "type": "boolean",
+        "inferenceType": "extractive",
+        "description": "Determine if Intuit has the technical ability to exceed the software entitlements for any products within the contract."
+      },
+      "privacy_security_exhibits": {
+        "type": "array",
+        "inferenceType": "extractive",
+        "description": "List of the privacy/security exhibits included with the contract (e.g., PSE/DPA/TOMs).",
+        "items": {
+          "type": "string"
+        }
+      },
+      "intuit_operating_unit": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Name of the Intuit Operating Unit/Intuit Entity associated with the contract."
+      },
+      "responsible_party": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Intuit Operating Unit/Intuit Entity associated with the contract. Include the resposnible party who signed and executed the contract."
+      },
+      "intuit_affiliates": {
+        "type": "array",
+        "inferenceType": "extractive",
+        "description": "Name of any of Intuit's affiliates that can use the contract and if they are named as a party who can benefit from the products and services under the agreement.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "financial_term_credits_rebates_tiered_discounts": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Extract information on credits, rebates, and tiered discounts as mentioned in the contract. Include if they come in the backend of the contract or lease agreement and any embedded terms."
+      },
+      "consumption_based_pricing": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Whether the contract includes consumption or usage-based pricing models."
+      },
+      "contract_signature_signed_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Date when the contract was signed"
+      },
+      "intuit_signatory_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Name of the Intuit representative who signed the contract"
+      },
+      "contract_nature": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Specifies whether the contract pertains to 'goods' or 'services'"
+      },
+      "license_applicable_timeframes": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Detail out applicable timeframes for license amount changes (e.g., year-over-year changes)."
+      },
+      "max_spend_threshold": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Maximum spending limit specified in the contract"
+      },
+      "saas_deployment": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Type of SaaS deployment model: \"on-premise\" or \"vendor-hosted\""
+      },
+      "governing_agreement_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The governing agreement details to establish contract hierarchy"
+      },
+      "attachment_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "all Attachments/Addendums included in the Agreement to validate compliance (IE- DPA/TOMs, AIML Addendum, Background Check Exhibit, CDS, etc)  and version date if applicable"
+      },
+      "agreement_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Type of contract agreement: \"Professional Services Agreement\", \"SaaS Agreement\", \"Statement of Work\""
+      },
+      "contract_paper_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Indicates if contracted on Intuit or Supplier paper: \"intuit\" or \"supplier\""
+      },
+      "termination_provision_conditions": {
+        "type": "array",
+        "inferenceType": "extractive",
+        "description": "Details of contract termination conditions",
+        "items": {
+          "type": "string"
+        }
+      },
+      "deliverables_obligations_and_established_slas": {
+        "type": "array",
+        "inferenceType": "extractive",
+        "description": "Deliverables, Obligations and established SLAs",
+        "items": {
+          "type": "string"
+        }
+      },
+      "coupa_contract_number": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Coupa Contract Number from Coupa Contract data"
+      },
+      "coupa_contract_id": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Coupa Contract ID from Coupa Contract data"
+      },
+      "engagement_id": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Aravo Engagement ID from Coupa PR Header or Aravo Engagement data table"
+      },
+      "cmapp_id": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "CMAPP ID from Coupa PR Header or CMAPP Quickbase"
+      },
+      "contract_link": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "URL link to the contract document"
+      },
+      "milestones_description": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The exact description of the milestone. Milestones are specific, measurable achievements or deliverables as defined in the SOW, often used to track progress. There is usually a payment associated with completion of a milestone."
+      },
+      "milestone_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The specific date associated with each milestone, indicating when the milestone is to be completed."
+      },
+      "milestone_amount": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Financial value or amount associated with a milestone, representing the payment to be made upon the completion of the milestone.  It is the respective amount paid against a corresponding milestone description and milestone date."
+      },
+      "resources_role": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Role of the resource(s) to be hired. Examples are developer, Java developer, Full-stack developer, ML developer, Data scientist, Backend Engineer, etc."
+      },
+      "resource_experience_level": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Descriptor for the Experience level of the resource to be hired. Examples are Senior, Sr, Junior, Jr., '10 years', '15 years'. This may be available as part of Resource Role instead of a separate column or as a separate column named Experience Level"
+      },
+      "resource_type": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Indicates whether a resource is a billable or a non billable resource."
+      },
+      "resource_count": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Number of Resources of a given type. If a count is not specified, show as 1."
+      },
+      "resource_start_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The specific start date associated with each resource, indicating when the resource’s term will begin."
+      },
+      "resource_end_date": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "The specific end date associated with each resource, indicating when the resource’s term will terminate."
+      },
+      "resource_hours_per_month": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "The number of hours per month per worker. It indicates the number of hours the resource is expected to work."
+      },
+      "resource_rate_per_hour": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "This is the hourly rate billable by the resource."
+      },
+      "resource_discount_percentage": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Discount percentage if any. This indicates a percentage discount on the Hourly Rate. If discount percentage is not specified, show as 0%"
+      },
+      "resource_discounted_rate": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "Hourly Rate after discount applied."
+      },
+      "resource_monthly_rate": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "This is the discounted rate per month per resource."
+      },
+      "resource_total_cost": {
+        "type": "number",
+        "inferenceType": "extractive",
+        "description": "This is the discounted rate per month per resource."
+      },
+      "product_name": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "SKU/product name"
+      },
+      "product_license_quantity": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "SKU/product name license quantity"
+      },
+      "product_description": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Product description"
+      },
+      "product_pricing": {
+        "type": "string",
+        "inferenceType": "extractive",
+        "description": "Product pricing information"
+      }
+    }
+    } 
